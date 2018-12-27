@@ -42,10 +42,9 @@ jobs:
 
     steps:
       - checkout
-      - run:
-        name: Deploy Master to Heroku
-        command: |
-          git push https://heroku:$HEROKU_API_TOKEN@git.heroku.com/asmuch.git master
+      # Deploy Master to Heroku
+      - run: git push https://heroku:$HEROKU_API_TOKEN@git.heroku.com/asmuch.git master
+
 
 workflows:
   version: 2
@@ -55,6 +54,3 @@ workflows:
       - deploy:
           requires:
             - build
-          filters:
-            branches:
-              only: master
